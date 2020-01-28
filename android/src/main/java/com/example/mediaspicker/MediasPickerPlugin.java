@@ -321,8 +321,12 @@ public class MediasPickerPlugin implements MethodCallHandler, ActivityResultList
 			if (intent != null) {
 				docPaths = intent.getStringArrayListExtra(FilePickerConst.KEY_SELECTED_MEDIA);
 			}
-			result.success(docPaths);
-			return true;
+			if(result != null) {
+				result.success(docPaths);
+				return true;
+			} else {
+				return false;
+			}
 		}
 		return false;
 	}
