@@ -308,8 +308,11 @@ public class MediasPickerPlugin implements MethodCallHandler, ActivityResultList
                     res = false;
                 }
             }
-
-			result.success(res);
+			if (result != null) {
+				result.success(res);
+			} else {
+				return false;
+			}
 		}
 		return res;
 	}
@@ -321,7 +324,7 @@ public class MediasPickerPlugin implements MethodCallHandler, ActivityResultList
 			if (intent != null) {
 				docPaths = intent.getStringArrayListExtra(FilePickerConst.KEY_SELECTED_MEDIA);
 			}
-			if(result != null) {
+			if (result != null) {
 				result.success(docPaths);
 				return true;
 			} else {
